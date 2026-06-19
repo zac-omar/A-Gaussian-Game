@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaussian Game</title>
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Gaussian Game</h1>
+        <p class="subtitle">Master row reduction: from REF to RREF</p>
+    </header>
+
+    <!-- Menu Screen -->
+    <section id="menu">
+        <div class="menu-content">
+            <h2>Welcome to Gaussian Game</h2>
+            <p class="instructions">
+                Perform row operations to reduce the matrix to REF or RREF form.
+                Fewer moves than par earns a star!
+            </p>
+            <div class="difficulty-select">
+                <h3>Select Difficulty:</h3>
+                <button class="diff-btn" data-difficulty="EASY">Easy (REF)</button>
+                <button class="diff-btn" data-difficulty="MEDIUM">Medium (RREF)</button>
+                <button class="diff-btn" data-difficulty="HARD">Hard (RREF)</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Screen -->
+    <section id="game" hidden role="main">
+        <!-- Info Bar -->
+        <div id="info-bar">
+            <span id="difficulty-label"></span>
+            <span id="target-form"></span>
+            <span id="moves-counter"></span>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div id="progress-bar"></div>
+            <span id="progress-text"></span>
+        </div>
+
+        <!-- Matrix Board -->
+        <div id="matrix-board"></div>
+
+        <!-- Status/Hint Line -->
+        <div id="status-line" aria-live="polite" role="status"></div>
+
+        <!-- Operation Controls -->
+        <div id="controls">
+            <button id="op-swap" class="op-btn" aria-pressed="false">Swap</button>
+            <button id="op-scale" class="op-btn" aria-pressed="false">Scale</button>
+            <button id="op-combine" class="op-btn" aria-pressed="false">Combine</button>
+        </div>
+
+        <!-- Scalar Chip Selector -->
+        <div id="scalar-selector" hidden></div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button id="btn-undo">Undo</button>
+            <button id="btn-reset">Reset</button>
+            <button id="btn-giveup" aria-label="Give Up">Give Up</button>
+            <button id="btn-menu">Menu</button>
+        </div>
+    </section>
+
+    <!-- Result Modal -->
+    <div id="result-modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="result-title">
+        <div class="modal-content">
+            <h2 id="result-title"></h2>
+            <div id="result-stars"></div>
+            <p id="result-stats"></p>
+            <p id="result-highscore"></p>
+            <button id="btn-play-again">Play Again</button>
+            <button id="btn-result-menu">Menu</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

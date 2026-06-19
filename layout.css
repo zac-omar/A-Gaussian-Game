@@ -1,0 +1,309 @@
+/* Layout CSS - Structural only (no colors, fonts, or animations) */
+
+/* Box sizing reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Body and main layout */
+body {
+    margin: 0;
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    /* Lock to viewport height so the game fits without scrolling */
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100vh;
+    max-height: 100dvh;
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+    flex: 0 0 auto;
+}
+
+header h1 {
+    margin: 0;
+    padding: 0;
+}
+
+header .subtitle {
+    margin: 0.5rem 0 0 0;
+    padding: 0;
+}
+
+/* Screen sections */
+section {
+    width: 100%;
+    max-width: 800px;
+    padding: var(--spacing-sm);
+}
+
+/* Menu Screen */
+#menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-content {
+    width: 100%;
+    max-width: 600px;
+}
+
+.menu-content h2 {
+    margin: 0 0 1rem 0;
+    text-align: center;
+}
+
+.instructions {
+    margin: 0 0 2rem 0;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.difficulty-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.difficulty-select h3 {
+    margin: 0;
+    text-align: center;
+}
+
+.difficulty-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.diff-btn {
+    min-width: 200px;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+}
+
+/* Game Screen */
+#game {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    /* Fill the remaining viewport height below the header, no scroll */
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* Info Bar */
+#info-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs);
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+#info-bar span {
+    flex: 0 1 auto;
+    text-align: center;
+}
+
+/* Progress Bar */
+#progress {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    flex: 0 0 auto;
+    /* Track container: styled by styles.css (height, bg, border, border-radius) */
+}
+
+#progress-bar {
+    /* RECONCILIATION FIE: styles.css models this as the fill (width animates, height:100%, gradient)
+       Removed conflicting height/border rules from layout.css; width:100% stays for fill to expand horizontally */
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#progress-text {
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Matrix Board — the prominent element, grows to fill available space */
+#matrix-board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 0;
+    flex: 1 1 auto;
+    padding: var(--spacing-sm);
+    overflow: hidden;
+}
+
+/* Status Line */
+#status-line {
+    text-align: center;
+    min-height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+
+/* Operation Controls */
+#controls {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs);
+    flex: 0 0 auto;
+    justify-items: stretch;
+}
+
+.op-btn {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    min-height: 44px;
+}
+
+/* Scalar Selector */
+#scalar-selector {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: var(--spacing-xs);
+    flex: 0 0 auto;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs);
+    flex: 0 0 auto;
+}
+
+.action-buttons button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    min-height: 44px;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+}
+
+.modal-content h2 {
+    margin: 0;
+    text-align: center;
+}
+
+.modal-content p {
+    margin: 0;
+    text-align: center;
+}
+
+#result-stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2rem;
+}
+
+.modal-content button {
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    min-width: 150px;
+}
+
+/* Hidden attribute support */
+[hidden] {
+    display: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    body {
+        padding: var(--spacing-xs);
+    }
+
+    section {
+        padding: var(--spacing-xs);
+    }
+
+    #info-bar {
+        flex-direction: row;
+        gap: var(--spacing-xs);
+    }
+
+    .diff-btn {
+        width: 100%;
+    }
+
+    #controls {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #op-combine {
+        grid-column: 1 / -1;
+    }
+
+    .op-btn {
+        min-width: 60px;
+    }
+
+}
+
+/* Very small phones: single column for operation buttons */
+@media (max-width: 400px) {
+    #controls {
+        grid-template-columns: 1fr;
+    }
+
+    #op-combine {
+        grid-column: auto;
+    }
+}
